@@ -9,9 +9,9 @@ export const ItemsList = () => {
   return (
     <ItemsListStyles.Container>
       {items.map((item) => (
-        <li key={item.id}>
-          {item.name} - R$ {item.price}
-        </li>
+          <li key={item.id}>
+            {item.name} - R$ {item.price}
+          </li>
       ))}
     </ItemsListStyles.Container>
   );

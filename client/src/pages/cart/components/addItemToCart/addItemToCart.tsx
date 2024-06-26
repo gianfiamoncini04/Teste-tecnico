@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useAppDispatch } from "../../../../hooks/redux";
 import { addItem } from "../../../../redux/cart/cartSlice";
+import * as Add from "./styles"
 
 export const AddItemToCart = () => {
   const [name, setName] = useState<string>("");
@@ -19,13 +20,13 @@ export const AddItemToCart = () => {
   };
 
   return (
-    <div>
-      <input
+    <Add.Container>
+      <Add.Input
         type="text"
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
-      <button onClick={handleAdd}>Adicionar item</button>
-    </div>
+      <Add.Button onClick={handleAdd}>Adicionar</Add.Button>
+    </Add.Container>
   );
 };
