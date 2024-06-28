@@ -3,8 +3,8 @@ import { styled } from "styled-components";
 export const Container = styled.div`
 	display: grid;
 	grid-template-columns: repeat(1, minmax(0, 1fr));
-	gap: 1rem;
-	padding: 1rem;
+	gap: 3rem;
+	padding: 1.5rem;
 	flex-wrap: wrap;
 	justify-content: center;
 
@@ -26,12 +26,11 @@ export const List = styled.div`
 	padding: 1rem;
     border-radius: 10px;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4);
-    cursor: pointer;
+	background-color: #fff;
 	transition-duration: 200ms;
-	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
 	&:hover{
-		transform: scale(1.05);
+		transform: scale(1.1);
 	}
 `;
 
@@ -44,7 +43,6 @@ export const Item = styled.div`
 	padding: 1rem;
     border-radius: 10px;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4);
-    cursor: pointer;
 `;
 
 export const Image = styled.img`

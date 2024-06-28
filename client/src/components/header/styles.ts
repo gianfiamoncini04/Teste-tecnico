@@ -14,7 +14,7 @@ export const Container = styled.header`
 export const StyledLink = styled(Link)`
   color: #fff;
   text-decoration: none;
-  font-size: 1.5rem;
+  font-size: 0.8rem;
   padding: 0.5rem;
   border-radius: 0.5rem;
   transition: 200ms;
@@ -22,4 +22,12 @@ export const StyledLink = styled(Link)`
   &:hover {
     background-color: #cf4f00;
   }
+
+  @media (min-width: 768px){
+    font-size: 1rem;
+	}
+
+	@media (min-width: 1280px){
+    font-size: 1.5rem;
+	}
 `;
