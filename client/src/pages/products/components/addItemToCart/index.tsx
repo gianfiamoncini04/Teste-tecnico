@@ -1,10 +1,9 @@
-import { useState } from "react";
 import { useAppDispatch } from "../../../../hooks/redux";
 import { addItem } from "../../../../redux/cart/cartSlice";
-import * as Add from "./styles"
+import * as addItemToWish from "./styles"
+import cart from "/cart.png"
 
 export const AddItemToCart = () => {
-  const [name, setName] = useState<string>("");
   // useDispatch para executar uma ação do carrinho (reducer do cartSlice)
   const dispatch = useAppDispatch();
 
@@ -16,17 +15,11 @@ export const AddItemToCart = () => {
         price: (Math.random() * 10).toFixed(2),
       })
     );
-    setName("");
   };
 
   return (
-    <Add.Container>
-      <Add.Input
-        type="text"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
-      <Add.Button onClick={handleAdd}>Adicionar</Add.Button>
-    </Add.Container>
+    <addItemToWish.Button onClick={handleAdd}>
+            <img src={cart} alt={cart} width={24} height={24} />
+    </addItemToWish.Button>
   );
 };

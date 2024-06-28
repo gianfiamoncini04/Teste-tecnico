@@ -1,7 +1,7 @@
 import { data } from "../../types/products";
 import * as ProductsStyled from "./styles"
 import { AddItemtoWish } from "./components/addItemToWish"
-import { RemoveItemToWish } from "./components/removeItemToWish"
+import { AddItemToCart } from "./components/addItemToCart"
 
 export const Products = () => {
     return (
@@ -15,7 +15,7 @@ export const Products = () => {
                             <p style={{fontSize: "1.5rem"}}>R$ {product.price}</p>
                             <div style={{display: "flex", flexDirection: "row", justifyContent: "center", alignItems: "center", gap: "1rem"}}>
                                 <AddItemtoWish />
-                                <RemoveItemToWish />
+                                <AddItemToCart />
                             </div>
                         </div>
                     </div>
