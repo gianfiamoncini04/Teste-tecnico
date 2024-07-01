@@ -5,6 +5,8 @@ import * as ItemsListStyles from "./styles";
 export const ItemsList = () => {
   const items = useSelector(getCartItemsState);
 
+  console.log(items)
+
   return (
     <ItemsListStyles.Container>
       {items.map((item) => (

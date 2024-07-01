@@ -3,9 +3,9 @@ import { useState, useEffect } from "react"
 import * as ProductsStyled from "./styles"
 import { AddItemToWish } from "./components/addItemToWish"
 import { AddItemToCart } from "./components/addItemToCart"
+import { IProducts } from "../../types/products"
 import { useAppDispatch } from "../../hooks/redux";
 import { setProducts } from "../../redux/products/productsSlice"
-import { IProducts } from "../../types/products"
 
 
 export const Products = () => {
@@ -15,8 +15,8 @@ export const Products = () => {
     useEffect(() => {
         axios.get<IProducts[]>('products.json')
         .then(response => {
-            setItems(response.data)
-            dispatch(setProducts(response.data))
+            setItems(response.data),
+            dispatch(setProducts(response.data));
         })    
     },[dispatch])
     
@@ -31,8 +31,8 @@ export const Products = () => {
                         <div style={{display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "start", gap: "1rem"}}>
                             <p style={{fontSize: "1.5rem"}}>R$ {product.price}</p>
                             <div style={{display: "flex", flexDirection: "row", justifyContent: "center", alignItems: "center", gap: "1rem"}}>
-                                <AddItemToWish />
-                                <AddItemToCart items={product}/>
+                                <AddItemToWish id={product.id} name={product.name} image_src={product.image_src} price={product.price} />
+                                <AddItemToCart id={product.id} name={product.name} image_src={product.image_src} price={product.price} />
                             </div>
                         </div>
                     </div>
