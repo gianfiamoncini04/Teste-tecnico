@@ -1,14 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { ICartState } from "../../types/cart";
+import { IProductsState } from "../../types/products";
 
-const initialState: ICartState = {
+const initialState: IProductsState = {
   items: [],
 };
 
 const cartSlice = createSlice({
   name: "cart",
   initialState,
-  // A lógica dos reducers poderá ser alterada se necessário
   reducers: {
     addItem(state, action) {
       state.items.push(action.payload);
@@ -18,11 +17,9 @@ const cartSlice = createSlice({
     },
   },
 });
-// exportar os reducers para serem utilizados em páginas e componentes
+
 export const { addItem, removeItem } = cartSlice.actions;
 
-// exportar o estado do carrinho para ser utilizado em páginas e componentes
-export const getCartItemsState = (state: { cart: ICartState }) =>
-  state.cart.items;
+export const getCartItemsState = (state: { cart: IProductsState }) => state.cart.items;
 
 export default cartSlice.reducer;

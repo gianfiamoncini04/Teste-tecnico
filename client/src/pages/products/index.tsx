@@ -1,12 +1,29 @@
-import { data } from "../../types/products";
+import axios from "axios"
+import { useState, useEffect } from "react"
 import * as ProductsStyled from "./styles"
-import { AddItemtoWish } from "./components/addItemToWish"
+import { AddItemToWish } from "./components/addItemToWish"
 import { AddItemToCart } from "./components/addItemToCart"
+import { useAppDispatch } from "../../hooks/redux";
+import { setProducts } from "../../redux/products/productsSlice"
+import { IProducts } from "../../types/products"
+
 
 export const Products = () => {
+    const [items, setItems ] = useState<IProducts[]>([])
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        axios.get<IProducts[]>('products.json')
+        .then(response => {
+            setItems(response.data)
+            dispatch(setProducts(response.data))
+        })    
+    },[dispatch])
+    
+
     return (
         <ProductsStyled.Container>
-            {data.map((product) => (
+            {items.map((product) => (
                 <ProductsStyled.List key={product.id}>
                     <p style={{fontSize: "1.55rem", fontWeight: "semibold"}}>{product.name}</p>
                     <div style={{display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center"}}>
@@ -14,8 +31,8 @@ export const Products = () => {
                         <div style={{display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "start", gap: "1rem"}}>
                             <p style={{fontSize: "1.5rem"}}>R$ {product.price}</p>
                             <div style={{display: "flex", flexDirection: "row", justifyContent: "center", alignItems: "center", gap: "1rem"}}>
-                                <AddItemtoWish />
-                                <AddItemToCart />
+                                <AddItemToWish />
+                                <AddItemToCart items={product}/>
                             </div>
                         </div>
                     </div>

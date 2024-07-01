@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { IProductsState } from "../../types/products";
 
 const initialState: IProductsState = {
-  data: [],
+  items: [],
 };
 
 const wishSlice = createSlice({
@@ -10,17 +10,16 @@ const wishSlice = createSlice({
   initialState,
   reducers: {
     addItem(state, action) {
-      state.data.push(action.payload);
+      state.items.push(action.payload);
     },
     removeItem(state, action) {
-      state.data = state.data.filter((data) => data.id !== action.payload);
+      state.items = state.items.filter((item) => item.id !== action.payload);
     },
   },
 });
 
 export const { addItem, removeItem } = wishSlice.actions;
 
-export const getWishItemsState = (state: { wish: IProductsState }) =>
-  state.wish.data;
+export const getWishItemsState = (state: { wish: IProductsState }) => state.wish.items;
 
 export default wishSlice.reducer;
